@@ -4,13 +4,14 @@
 #
 Name     : pypi-py_cpuinfo
 Version  : 8.0.0
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/e6/ba/77120e44cbe9719152415b97d5bfb29f4053ee987d6cb63f55ce7d50fadc/py-cpuinfo-8.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e6/ba/77120e44cbe9719152415b97d5bfb29f4053ee987d6cb63f55ce7d50fadc/py-cpuinfo-8.0.0.tar.gz
 Summary  : Get CPU info with pure Python 2 & 3
 Group    : Development/Tools
 License  : MIT
 Requires: pypi-py_cpuinfo-bin = %{version}-%{release}
+Requires: pypi-py_cpuinfo-license = %{version}-%{release}
 Requires: pypi-py_cpuinfo-python = %{version}-%{release}
 Requires: pypi-py_cpuinfo-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -27,9 +28,18 @@ BuildRequires : buildreq-distutils3
 %package bin
 Summary: bin components for the pypi-py_cpuinfo package.
 Group: Binaries
+Requires: pypi-py_cpuinfo-license = %{version}-%{release}
 
 %description bin
 bin components for the pypi-py_cpuinfo package.
+
+
+%package license
+Summary: license components for the pypi-py_cpuinfo package.
+Group: Default
+
+%description license
+license components for the pypi-py_cpuinfo package.
 
 
 %package python
@@ -60,7 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1642460379
+export SOURCE_DATE_EPOCH=1642460862
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -80,6 +90,8 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-py_cpuinfo
+cp %{_builddir}/py-cpuinfo-8.0.0/LICENSE %{buildroot}/usr/share/package-licenses/pypi-py_cpuinfo/bc698f64c398a3d4be6bdc320d55c75d60561abe
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -91,6 +103,10 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/cpuinfo
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-py_cpuinfo/bc698f64c398a3d4be6bdc320d55c75d60561abe
 
 %files python
 %defattr(-,root,root,-)
