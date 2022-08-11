@@ -4,7 +4,7 @@
 #
 Name     : pypi-py_cpuinfo
 Version  : 8.0.0
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/e6/ba/77120e44cbe9719152415b97d5bfb29f4053ee987d6cb63f55ce7d50fadc/py-cpuinfo-8.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/e6/ba/77120e44cbe9719152415b97d5bfb29f4053ee987d6cb63f55ce7d50fadc/py-cpuinfo-8.0.0.tar.gz
 Summary  : Get CPU info with pure Python 2 & 3
