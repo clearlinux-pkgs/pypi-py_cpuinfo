@@ -1,5 +1,5 @@
 PKG_NAME := pypi-py_cpuinfo
-URL = https://files.pythonhosted.org/packages/e6/ba/77120e44cbe9719152415b97d5bfb29f4053ee987d6cb63f55ce7d50fadc/py-cpuinfo-8.0.0.tar.gz
+URL = https://files.pythonhosted.org/packages/37/a8/d832f7293ebb21690860d2e01d8115e5ff6f2ae8bbdc953f0eb0fa4bd2c7/py-cpuinfo-9.0.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
